@@ -53,8 +53,8 @@ function addNewToDo()
     var newCell = document.createElement('input');
     newCell.type = 'text';
     newCell.name = next_index;
-    //newCell.keyup = saveToDo(this);
-    newCell.addEventListener('keyup', saveToDo(newCell));
+    newCell.setAttribute('onkeyup', 'saveToDo(this)');
+    //newCell.addEventListener('keyup', saveToDo(newCell));
     var container = document.getElementById('container');
     //container.innerHTML = container.innerHTML + newCell;
     container.appendChild(newCell);
