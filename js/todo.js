@@ -1,3 +1,11 @@
+/**
+ * Simple todo list
+ * 
+ * @author Saurabh aka JSX <saurabh@rebugged.com>
+ * @license MIT License
+ * http://rebugged.com/
+ * 
+ */
 var todo = function(){
     this.empty_cells = [];
 
