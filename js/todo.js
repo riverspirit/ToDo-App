@@ -85,22 +85,21 @@ var todo = function(){
     this.catchKeyPress = function(event, element)
     {
         this.unHighlightCells('spotlight');
-        shiftPressed = event.shiftKey ? true : false;
-        //console.log();
+        var shiftPressed = event.shiftKey ? true : false;
         
-        if (event.keyCode == 13 && element.value != '')
+        if (event.keyCode == 13 && element.value != '' && element.tagName == 'INPUT')
         {
              // Add a new todo box when enter key is pressed
             this.addNewToDo();
         }
-        else if (event.keyCode == 46 && !element.value)
+        else if (event.keyCode == 46 && !element.value && element.tagName == 'INPUT')
         {
             // If the cell is empty and delete key is pressed, the cell is deleted
             var container = document.getElementById('container');
             container.removeChild(element);
             this.empty_cells[element.name] = undefined;
         }
-        else if (event.keyCode == 46 && shiftPressed)
+        else if (event.keyCode == 46 && shiftPressed && element.tagName == 'INPUT')
         {
             // If shift + delete is pressed, the cell is deleted even if it is not empty
             var deleteConfirm = confirm("Delete this entry?");
@@ -114,6 +113,12 @@ var todo = function(){
                 this.empty_cells[element.name] = undefined;
             }
         }
+        else if (event.charCode == 78 && shiftPressed)
+        {
+            // Shift + N to add new todo cell
+            this.addNewToDo();
+        }
+        
     }
     
     this.countEmptyCells = function()

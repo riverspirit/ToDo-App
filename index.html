@@ -6,13 +6,18 @@
         <link rel="stylesheet" href="css/todo.css" />
         <script src="js/todo.js"></script>
     </head>
-    <body>
+    <body onkeypress="todoObj.catchKeyPress(event, this)">
         <div class="container" id="container">
+            <div id="header">Saurabh's To Do List</div>
             <script>
                 todoObj.showToDoCells();
             </script>
         </div>
             <a href="javascript:;" onclick="todoObj.clearStorage();" class="button">Clear</a>
             <a href="javascript:;" onclick="todoObj.addNewToDo();" class="button">Add New</a>
+            
+        <div>
+            Made with love by Saurabh
+        </div>
     </body>
 </html>
