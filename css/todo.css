@@ -5,3 +5,7 @@ root {
 .spotlight {
     border: 1px dashed red;
 }
+
+.container input {
+    display: block;
+}

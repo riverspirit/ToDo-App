@@ -46,7 +46,7 @@ var todo = function(){
             var val = todo_data[this_todo_index];
             if (val)
             {
-                document.write('<input type="text" name="'+this_todo_index+'" onkeyup="todoObj.saveToDo(this)" onkeypress="todoObj.catchKeyPress(event, this)" value="'+val+'" /><br/>');
+                document.write('<input type="text" name="'+this_todo_index+'" onkeyup="todoObj.saveToDo(this)" onkeypress="todoObj.catchKeyPress(event, this)" value="'+val+'" />');
             }
             
         }
@@ -71,11 +71,9 @@ var todo = function(){
             newCell.name = next_index;
             newCell.setAttribute('onkeyup', 'todoObj.saveToDo(this)');
             newCell.setAttribute('onkeypress', 'todoObj.catchKeyPress(event, this)');
-            var br = document.createElement('br');
 
             var container = document.getElementById('container');
             container.appendChild(newCell);
-            container.appendChild(br);
         }
         this.highlightEmptyCells('spotlight');
     }
@@ -83,11 +81,18 @@ var todo = function(){
     this.catchKeyPress = function(event, element)
     {
         this.unHighlightCells('spotlight');
+        console.log(element);
         
-        if (element.value != '' && event.keyCode == 13)
+        if (event.keyCode == 13 && element.value != '')
         {
              // Add a new todo box when enter key is pressed
             this.addNewToDo();
+        }
+        else if (event.keyCode == 46 && !element.value)
+        {
+            var container = document.getElementById('container');
+            container.removeChild(element);
+            this.empty_cells[element.name] = undefined;
         }
     }
     
