@@ -10,8 +10,12 @@ var todo = function(){
 
     this.clearStorage = function()
     {
-        localStorage.clear();
-        window.location.reload();
+        var clearConfirm = confirm("Delete all the items?");
+        if (clearConfirm)
+        {
+            localStorage.clear();
+            window.location.reload();
+        }
     }
     
 
