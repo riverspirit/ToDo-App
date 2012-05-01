@@ -2,3 +2,6 @@ root {
     display: block;
 }
 
+.spotlight {
+    border: 1px dashed red;
+}
