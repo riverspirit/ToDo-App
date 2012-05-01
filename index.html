@@ -8,7 +8,9 @@
     </head>
     <body onkeypress="todoObj.catchKeyPress(event, this)">
         <div class="container" id="container">
-            <div id="header">Saurabh's To Do List</div>
+            <div id="header">
+                <span id="listName" class="listName" onclick="todoObj.getListName(this)">My To Do List</span>
+            </div>
             <script>
                 todoObj.showToDoCells();
             </script>
@@ -16,8 +18,12 @@
             <a href="javascript:;" onclick="todoObj.clearStorage();" class="button">Clear</a>
             <a href="javascript:;" onclick="todoObj.addNewToDo();" class="button">Add New</a>
             
-        <div>
-            Made with love by Saurabh
+        <div id="footer">
+            <div>
+                <span class="keyboardShortcutTip">SHIFT + N Create New</span>
+                <span class="keyboardShortcutTip">SHIFT + Del Delete Todo Item</span>
+            </div>
+            <div>Made with <span class="heart">&hearts;</span> by Saurabh</div>
         </div>
     </body>
 </html>
