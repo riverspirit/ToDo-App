@@ -155,6 +155,36 @@ var todo = function(){
             cells[cell].classList.remove(classToBeRemoved);
         }
     }
+    
+    this.getListName = function(element)
+    {
+        var listName = prompt("Enter name for the list:-");
+        if (listName)
+        {
+            element.innerHTML = listName;
+            var todo_app_data = JSON.parse(localStorage.getItem('todo_app'));
+            if (!todo_app_data)
+            {
+                todo_app_data = {};
+            }
+            todo_app_data.listName = listName;
+            localStorage.setItem('todo_app', JSON.stringify(todo_app_data));
+        }
+    }
+    
+    this.setListName = function()
+    {
+        var todo_app_data = JSON.parse(localStorage.getItem('todo_app'));
+        document.getElementById('listName').innerHTML = todo_app_data.listName;
+    }
 }
 
 var todoObj = new todo;
+if(document.readyState === 'complete')
+{
+    todoObj.setListName();
+}
+else
+{
+    window.addEventListener('DOMContentLoaded', function() { todoObj.setListName(); }, false);
+}
