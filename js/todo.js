@@ -175,7 +175,10 @@ var todo = function(){
     this.setListName = function()
     {
         var todo_app_data = JSON.parse(localStorage.getItem('todo_app'));
-        document.getElementById('listName').innerHTML = todo_app_data.listName;
+        if (todo_app_data && todo_app_data.listName)
+        {
+            document.getElementById('listName').innerHTML = todo_app_data.listName;
+        }
     }
 }
 
