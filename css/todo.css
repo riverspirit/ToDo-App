@@ -1,9 +1,15 @@
+@font-face {
+  font-family: "Open Sans";
+  src: url('../fonts/OpenSans-Regular.ttf');
+}
+
 root { 
     display: block;
 }
 
 body {
     text-align: center;
+    margin: 0;
 }
 
 .spotlight {
@@ -36,4 +42,36 @@ body {
     text-align: center;
     text-decoration: none;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+#header {
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: right;
+    font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
+    color: #2D85C9;
+    background-color: #2C2C2C;
+    background-image: -moz-linear-gradient(center top , #333333, #222222);
+    background-repeat: repeat-x;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#footer {
+    color: #999999;
+    font-size: 0.9em;
+    margin: 1em auto;
+    text-align: center;
+    font: 100 0.8em/1.5em "Open Sans","Helvetica Neue",Arial,sans-serif;
+}
+
+.heart {
+    color: #B91E27;
+}
+
+.keyboardShortcutTip {
+    border: 1px solid #EAE9E8;
+    border-radius: 3px;
+    padding: 1px;
 }
