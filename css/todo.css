@@ -80,3 +80,12 @@ body {
 .listName:hover {
     color: #2D85C9;
 }
+
+.footerLink {
+    color: #292929;
+    text-decoration: none;
+}
+
+.footerLink:hover {
+    color: #666666;
+}
