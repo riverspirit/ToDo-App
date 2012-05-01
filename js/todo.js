@@ -81,7 +81,8 @@ var todo = function(){
     this.catchKeyPress = function(event, element)
     {
         this.unHighlightCells('spotlight');
-        console.log(element);
+        shiftPressed = event.shiftKey ? true : false;
+        //console.log();
         
         if (event.keyCode == 13 && element.value != '')
         {
@@ -90,9 +91,24 @@ var todo = function(){
         }
         else if (event.keyCode == 46 && !element.value)
         {
+            // If the cell is empty and delete key is pressed, the cell is deleted
             var container = document.getElementById('container');
             container.removeChild(element);
             this.empty_cells[element.name] = undefined;
+        }
+        else if (event.keyCode == 46 && shiftPressed)
+        {
+            // If shift + delete is pressed, the cell is deleted even if it is not empty
+            var deleteConfirm = confirm("Delete this entry?");
+            if (deleteConfirm)
+            {
+                var todo_data = JSON.parse(localStorage.getItem('todo_data'));
+                todo_data[element.name] = '';
+                localStorage.setItem('todo_data', JSON.stringify(todo_data));
+                var container = document.getElementById('container');
+                container.removeChild(element);
+                this.empty_cells[element.name] = undefined;
+            }
         }
     }
     
