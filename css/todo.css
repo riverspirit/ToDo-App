@@ -46,10 +46,11 @@ body {
 
 #header {
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 4px;
     text-align: right;
     font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
-    color: #2D85C9;
+    font-size: 1.5em;
+    color: #CCCCCC;
     background-color: #2C2C2C;
     background-image: -moz-linear-gradient(center top , #333333, #222222);
     background-repeat: repeat-x;
@@ -74,4 +75,8 @@ body {
     border: 1px solid #EAE9E8;
     border-radius: 3px;
     padding: 1px;
+}
+
+.listName:hover {
+    color: #2D85C9;
 }
