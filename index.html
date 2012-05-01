@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html manifest="todo.appcache">
     <head>
         <title>To Do App</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,9 +8,9 @@
     </head>
     <body>
         <div class="container" id="container">
-            <a href="javascript:;" onclick="todoObj.clearStorage();">Clear</a>
-            <a href="javascript:;" onclick="todoObj.addNewToDo();">Add New</a>
-<br/>
+            <a href="javascript:;" onclick="todoObj.clearStorage();" class="button">Clear</a>
+            <a href="javascript:;" onclick="todoObj.addNewToDo();" class="button">Add New</a>
+            <br/>
             <script>
                 todoObj.showToDoCells();
             </script>
