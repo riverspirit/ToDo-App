@@ -99,3 +99,8 @@ body {
 .footerLink:hover {
     color: #666666;
 }
+
+.appIcon {
+    vertical-align: text-top;
+    float: left;
+}
