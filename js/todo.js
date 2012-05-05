@@ -58,7 +58,10 @@ var todo = function(){
             var val = todo_data[this_todo_index];
             if (val)
             {
-                document.write('<input type="text" name="'+this_todo_index+'" onkeyup="todoObj.saveToDo(this)" onkeypress="todoObj.catchKeyPress(event, this)" value="'+val+'" />');
+                document.write('<div class="todoCellDiv" id="cellDiv-'+this_todo_index+'">\n\
+                                <input type="text" name="'+this_todo_index+'" onkeyup="todoObj.saveToDo(this)" onkeypress="todoObj.catchKeyPress(event, this)" value="'+val+'" />\n\
+                                <input type="button" class="todoStatus" name="status-'+this_todo_index+'" onclick="todoObj.changeTodoStatus(this)" />\n\
+                                </div>');
             }
             
         }
@@ -84,10 +87,25 @@ var todo = function(){
             newCell.setAttribute('onkeyup', 'todoObj.saveToDo(this)');
             newCell.setAttribute('onkeypress', 'todoObj.catchKeyPress(event, this)');
 
+            var todoStatusBtn = document.createElement('input');
+            todoStatusBtn.type = 'button';
+            todoStatusBtn.className = 'todoStatus';
+            todoStatusBtn.name = 'status-'+next_index;
+            todoStatusBtn.style.marginLeft = '5px';
+            todoStatusBtn.setAttribute('onclick', 'todoObj.changeTodoStatus(this)');
+
+            
+            var todoCellDiv = document.createElement('div');
+            todoCellDiv.className = "todoCellDiv";
+            todoCellDiv.id = 'cellDiv-'+next_index;
+            todoCellDiv.appendChild(newCell);
+            todoCellDiv.appendChild(todoStatusBtn);
+            
+
             var container = document.getElementById('container');
-            container.appendChild(newCell);
+            container.appendChild(todoCellDiv);
         }
-        this.highlightEmptyCells('spotlight');
+        //this.highlightEmptyCells('spotlight');
     }
 
     this.catchKeyPress = function(event, element)
@@ -104,7 +122,8 @@ var todo = function(){
         {
             // If the cell is empty and delete key is pressed, the cell is deleted
             var container = document.getElementById('container');
-            container.removeChild(element);
+            var cellDiv = document.getElementById('cellDiv-'+element.name);
+            container.removeChild(cellDiv);
             this.empty_cells[element.name] = undefined;
         }
         else if (event.keyCode == 46 && shiftPressed && element.tagName == 'INPUT')
@@ -117,7 +136,8 @@ var todo = function(){
                 todo_data[element.name] = '';
                 localStorage.setItem('todo_data', JSON.stringify(todo_data));
                 var container = document.getElementById('container');
-                container.removeChild(element);
+                var cellDiv = document.getElementById('cellDiv-'+element.name);
+                container.removeChild(cellDiv);
                 this.empty_cells[element.name] = undefined;
             }
         }
@@ -160,7 +180,10 @@ var todo = function(){
         var cells = document.getElementsByTagName('input');
         for (var cell in cells)
         {
-            cells[cell].classList.remove(classToBeRemoved);
+            if (cells.hasOwnProperty(cell))
+            {
+                cells[cell].classList.remove(classToBeRemoved);
+            }
         }
     }
     
@@ -188,6 +211,11 @@ var todo = function(){
             document.getElementById('listName').innerHTML = todo_app_data.listName;
         }
     }
+    
+    this.changeTodoStatus = function(element)
+    {
+        element.classList.add('todoCompleted');
+    }
 }
 
 var todoObj = new todo;
@@ -197,5 +225,6 @@ if(document.readyState === 'complete')
 }
 else
 {
-    window.addEventListener('DOMContentLoaded', function() { todoObj.setListName(); }, false);
+    window.addEventListener('DOMContentLoaded', function() {todoObj.setListName();}, false);
 }
+
