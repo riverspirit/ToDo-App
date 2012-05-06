@@ -111,7 +111,7 @@ body {
     float: left;
 }
 
-.todoStatus {
+.todoNotDone {
     display: inline-block;
     height: 27px !important;
     width: 27px !important;
@@ -134,7 +134,7 @@ body {
     cursor: pointer;
 }
 
-.todoStatus::-moz-focus-inner, .todoCompleted::-moz-focus-inner {
+.todoNotDone::-moz-focus-inner, .todoCompleted::-moz-focus-inner {
   border: 0;
 }
 

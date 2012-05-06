@@ -34,8 +34,15 @@ var todo = function(){
         {
             todo_data = [];
         }
-
-        todo_data[this_todo.name] = this_todo.value;
+        var data_obj = {};
+        data_obj.data = this_todo.value;
+        var status = document.getElementById('status-'+this_todo.name).className;
+        status = (status == 'todoNotDone') ? false : ((status == 'todoCompleted') ? true : false);
+        data_obj.status = status;
+        todo_data[this_todo.name] = data_obj;
+        
+        
+        console.log(status);
         
         if (this_todo.value)
         {
@@ -45,6 +52,15 @@ var todo = function(){
         {
             this.empty_cells[this_todo.name] = 'empty';
         }
+        
+        // Lets remove all empty cells before saving.
+        for (var todo_index in todo_data)
+        {
+            if (!todo_data[todo_index].data)
+            {
+                todo_data.splice(todo_index, 1);
+            }
+        }
 
         localStorage.setItem('todo_data', JSON.stringify(todo_data));
     }
@@ -53,14 +69,17 @@ var todo = function(){
     this.showToDoCells = function()
     {
         var todo_data = JSON.parse(localStorage.getItem('todo_data'));
+        console.log(todo_data);
         for (this_todo_index in todo_data)
         {
-            var val = todo_data[this_todo_index];
+            var todoStatus = todo_data[this_todo_index].status;
+            var statusClass = (todoStatus) ? 'todoCompleted' : 'todoNotDone';
+            var val = todo_data[this_todo_index].data;
             if (val)
             {
                 document.write('<div class="todoCellDiv" id="cellDiv-'+this_todo_index+'">\n\
                                 <input type="text" name="'+this_todo_index+'" onkeyup="todoObj.saveToDo(this)" onkeypress="todoObj.catchKeyPress(event, this)" value="'+val+'" />\n\
-                                <input type="button" class="todoStatus" name="status-'+this_todo_index+'" onclick="todoObj.changeTodoStatus(this)" value="" />\n\
+                                <input type="button" class="'+statusClass+'" id="status-'+this_todo_index+'" onclick="todoObj.changeTodoStatus(this)" />\n\
                                 </div>');
             }
             
@@ -89,8 +108,8 @@ var todo = function(){
 
             var todoStatusBtn = document.createElement('input');
             todoStatusBtn.type = 'button';
-            todoStatusBtn.className = 'todoStatus';
-            todoStatusBtn.name = 'status-'+next_index;
+            todoStatusBtn.className = 'todoNotDone';
+            todoStatusBtn.id = 'status-'+next_index;
             todoStatusBtn.style.marginLeft = '5px';
             todoStatusBtn.setAttribute('onclick', 'todoObj.changeTodoStatus(this)');
 
@@ -214,17 +233,19 @@ var todo = function(){
     
     this.changeTodoStatus = function(element)
     {
-        if (element.className == 'todoStatus')
+        if (element.className == 'todoNotDone')
         {
-            element.classList.remove('todoStatus');
+            element.classList.remove('todoNotDone');
             element.classList.add('todoCompleted');
         }
         else if (element.className == 'todoCompleted')
         {
             element.classList.remove('todoCompleted');
-            element.classList.add('todoStatus');
+            element.classList.add('todoNotDone');
         }
-        //console.log(element.className)
+        todo_name = element.id.replace(/status-/, '');
+        //console.log();
+        this.saveToDo(document.getElementsByName(todo_name)[0]);
     }
 }
 
