@@ -41,9 +41,6 @@ var todo = function(){
         data_obj.status = status;
         todo_data[this_todo.name] = data_obj;
         
-        
-        console.log(status);
-        
         if (this_todo.value)
         {
             this.empty_cells[this_todo.name] = undefined;
@@ -69,7 +66,6 @@ var todo = function(){
     this.showToDoCells = function()
     {
         var todo_data = JSON.parse(localStorage.getItem('todo_data'));
-        console.log(todo_data);
         for (this_todo_index in todo_data)
         {
             var todoStatus = todo_data[this_todo_index].status;
@@ -124,7 +120,7 @@ var todo = function(){
             var container = document.getElementById('container');
             container.appendChild(todoCellDiv);
         }
-        //this.highlightEmptyCells('spotlight');
+        this.highlightEmptyCells('spotlight');
     }
 
     this.catchKeyPress = function(event, element)
@@ -186,7 +182,7 @@ var todo = function(){
         var all_cells = document.getElementsByTagName('input');
         for (var cell in all_cells)
         {
-            if (!all_cells[cell].value)
+            if (all_cells.hasOwnProperty(cell) && !all_cells[cell].value)
             {
                 all_cells[cell].classList.add(highlightClass);
                 all_cells[cell].focus();
@@ -244,7 +240,6 @@ var todo = function(){
             element.classList.add('todoNotDone');
         }
         todo_name = element.id.replace(/status-/, '');
-        //console.log();
         this.saveToDo(document.getElementsByName(todo_name)[0]);
     }
 }
