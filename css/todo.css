@@ -23,7 +23,6 @@ body {
 }
 
 .container input {
-    display: block;
     border: 1px solid #CCCCCC;
     border-radius: 3px 3px 3px 3px;
     color: #333333;
@@ -110,4 +109,35 @@ body {
 .appIcon {
     vertical-align: text-top;
     float: left;
+}
+
+.todoStatus {
+    display: inline-block;
+    height: 27px !important;
+    width: 27px !important;
+    border: 0 none !important;
+    background-color: transparent;
+    opacity: 0.1 !important;
+    background-image: url('../images/done.png');
+    background-size:27px;
+    cursor: pointer;
+}
+
+.todoCompleted {
+    height: 27px !important;
+    width: 27px !important;
+    background-color: transparent;
+    background-image: url('../images/done.png');
+    background-size:27px;
+    border: 0 none !important;
+    opacity: 1 !important;
+    cursor: pointer;
+}
+
+.todoStatus::-moz-focus-inner, .todoCompleted::-moz-focus-inner {
+  border: 0;
+}
+
+.todoCellDiv {
+    
 }

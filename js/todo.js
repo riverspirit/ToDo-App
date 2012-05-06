@@ -60,7 +60,7 @@ var todo = function(){
             {
                 document.write('<div class="todoCellDiv" id="cellDiv-'+this_todo_index+'">\n\
                                 <input type="text" name="'+this_todo_index+'" onkeyup="todoObj.saveToDo(this)" onkeypress="todoObj.catchKeyPress(event, this)" value="'+val+'" />\n\
-                                <input type="button" class="todoStatus" name="status-'+this_todo_index+'" onclick="todoObj.changeTodoStatus(this)" />\n\
+                                <input type="button" class="todoStatus" name="status-'+this_todo_index+'" onclick="todoObj.changeTodoStatus(this)" value="" />\n\
                                 </div>');
             }
             
@@ -214,7 +214,17 @@ var todo = function(){
     
     this.changeTodoStatus = function(element)
     {
-        element.classList.add('todoCompleted');
+        if (element.className == 'todoStatus')
+        {
+            element.classList.remove('todoStatus');
+            element.classList.add('todoCompleted');
+        }
+        else if (element.className == 'todoCompleted')
+        {
+            element.classList.remove('todoCompleted');
+            element.classList.add('todoStatus');
+        }
+        //console.log(element.className)
     }
 }
 
