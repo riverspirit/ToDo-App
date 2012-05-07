@@ -130,7 +130,7 @@ var todo = function(){
         if (event.keyCode != 13 && element.tagName == 'INPUT')
         {
              // Remove the highlighting if any key other than enter was pressed in an input field
-            this.unHighlightCells('spotlight');
+            this.unHighlightCells();
         }
         if (event.keyCode == 13 && element.value != '' && element.tagName == 'INPUT')
         {
@@ -195,14 +195,14 @@ var todo = function(){
         }
     }
     
-    this.unHighlightCells = function(classToBeRemoved)
+    this.unHighlightCells = function()
     {
         var cells = document.getElementsByTagName('input');
         for (var cell in cells)
         {
-            if (cells.hasOwnProperty(cell))
+            if (cells.hasOwnProperty(cell) && cells[cell].type == 'text')
             {
-                cells[cell].classList.remove(classToBeRemoved);
+                cells[cell].className = '';
             }
         }
     }
@@ -236,13 +236,11 @@ var todo = function(){
     {
         if (element.className == 'todoNotDone')
         {
-            element.classList.remove('todoNotDone');
-            element.classList.add('todoCompleted');
+            element.className = 'todoCompleted';
         }
         else if (element.className == 'todoCompleted')
         {
-            element.classList.remove('todoCompleted');
-            element.classList.add('todoNotDone');
+            element.className = 'todoNotDone';
         }
         todo_name = element.id.replace(/status-/, '');
         this.saveToDo(document.getElementsByName(todo_name)[0]);
