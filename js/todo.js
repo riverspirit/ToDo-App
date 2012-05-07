@@ -100,7 +100,7 @@ var todo = function(){
             newCell.type = 'text';
             newCell.name = next_index;
             newCell.setAttribute('onkeyup', 'todoObj.saveToDo(this)');
-            newCell.setAttribute('onkeypress', 'todoObj.catchKeyPress(event, this)');
+            newCell.setAttribute('onkeydown', 'todoObj.catchKeyPress(event, this)');
 
             var todoStatusBtn = document.createElement('input');
             todoStatusBtn.type = 'button';
