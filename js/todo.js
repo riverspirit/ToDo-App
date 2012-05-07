@@ -125,9 +125,13 @@ var todo = function(){
 
     this.catchKeyPress = function(event, element)
     {
-        this.unHighlightCells('spotlight');
         var shiftPressed = event.shiftKey ? true : false;
         
+        if (event.keyCode != 13 && element.tagName == 'INPUT')
+        {
+             // Remove the highlighting if any key other than enter was pressed in an input field
+            this.unHighlightCells('spotlight');
+        }
         if (event.keyCode == 13 && element.value != '' && element.tagName == 'INPUT')
         {
              // Add a new todo box when enter key is pressed
@@ -182,9 +186,10 @@ var todo = function(){
         var all_cells = document.getElementsByTagName('input');
         for (var cell in all_cells)
         {
-            if (all_cells.hasOwnProperty(cell) && !all_cells[cell].value)
+            //console.log(all_cells[cell].nodeType);
+            if (all_cells.hasOwnProperty(cell) && !all_cells[cell].value && all_cells[cell].type == 'text')
             {
-                all_cells[cell].classList.add(highlightClass);
+                all_cells[cell].className = highlightClass;
                 all_cells[cell].focus();
             }
         }
