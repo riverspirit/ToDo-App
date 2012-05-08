@@ -66,11 +66,16 @@ var todo = function(){
     this.showToDoCells = function()
     {
         var todo_data = JSON.parse(localStorage.getItem('todo_data'));
-        for (this_todo_index in todo_data)
+        for (var this_todo_index in todo_data)
         {
-            var todoStatus = todo_data[this_todo_index].status;
+            var todoStatus, val;
+            if (todo_data[this_todo_index] != null)
+            {
+                todoStatus = todo_data[this_todo_index].status;
+                val = todo_data[this_todo_index].data;
+            }
             var statusClass = (todoStatus) ? 'todoCompleted' : 'todoNotDone';
-            var val = todo_data[this_todo_index].data;
+
             if (val)
             {
                 document.write('<div class="todoCellDiv" id="cellDiv-'+this_todo_index+'">\n\
