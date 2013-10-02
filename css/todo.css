@@ -19,21 +19,33 @@ body {
 }
 
 .spotlight {
-    border: 1px dashed red !important;
+    border: 1px solid #129FEA !important;
+    box-shadow: 0 1px 1px #DDDDDD inset;
 }
 
 .container input {
-    border: 1px solid #CCCCCC;
-    border-radius: 3px 3px 3px 3px;
-    color: #333333;
-    font-size: 13px;
-    height: 18px;
-    line-height: 18px;
-    padding: 4px;
-    margin: 0 auto;
-    margin-bottom: 5px;
-    width: 400px;
+    color: #000000;
+    -moz-box-sizing: border-box;
+    border: 0 none;
+
+    /**/
+
+    font-size: 0.8em;
+
+
     font: 200 14px/28px Arial, sans-serif;
+    height: 28px;
+}
+
+.container input[type=text] {
+    width: calc(100% - 80px);
+    background: #EDF1ED;
+
+}
+
+.container input:hover {
+/*    border: 1px solid #129FEA;
+    outline: 0 none;*/
 }
 
 .button {
@@ -139,5 +151,18 @@ body {
 }
 
 .todoCellDiv {
-    
+    width: 95%;
+    margin: 0 auto;
+    background: #EDF1ED;
+    margin-bottom: 5px;
+    border: 1px solid transparent;
+    transition: border 0.3s linear 0s;
+    border-radius: 4px 4px 4px 4px;
+    padding: 2px 0 8px 0;
+    height: 20px;
+}
+
+.todoCellDiv:hover {
+    border: 1px solid #129FEA;
+    box-shadow: 0 1px 1px #DDDDDD inset;
 }
