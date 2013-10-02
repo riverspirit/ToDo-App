@@ -27,12 +27,7 @@ body {
     color: #000000;
     -moz-box-sizing: border-box;
     border: 0 none;
-
-    /**/
-
     font-size: 0.8em;
-
-
     font: 200 14px/28px Arial, sans-serif;
     height: 28px;
 }
@@ -43,10 +38,6 @@ body {
 
 }
 
-.container input:hover {
-/*    border: 1px solid #129FEA;
-    outline: 0 none;*/
-}
 
 .button {
     background-color: #888888;
@@ -56,7 +47,8 @@ body {
     color: #FFFFFF;
     display: inline-block;
     font: 600 14px/28px "Open Sans","Helvetica Neue",Arial,sans-serif;
-    padding: 0 15px;
+    height: 29px;
+    padding: 3px 15px;
     text-align: center;
     text-decoration: none;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
