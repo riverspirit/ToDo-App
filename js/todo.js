@@ -135,7 +135,7 @@ var todo = function(){
         if (event.keyCode != 13 && element.tagName == 'INPUT')
         {
              // Remove the highlighting if any key other than enter was pressed in an input field
-            this.unHighlightCells();
+            this.unHighlightCells('spotlight');
         }
         if (event.keyCode == 13 && element.value != '' && element.tagName == 'INPUT')
         {
@@ -191,23 +191,22 @@ var todo = function(){
         var all_cells = document.getElementsByTagName('input');
         for (var cell in all_cells)
         {
-            //console.log(all_cells[cell].nodeType);
             if (all_cells.hasOwnProperty(cell) && !all_cells[cell].value && all_cells[cell].type == 'text')
             {
-                all_cells[cell].className = highlightClass;
+                all_cells[cell].parentNode.classList.add(highlightClass);
                 all_cells[cell].focus();
             }
         }
     }
     
-    this.unHighlightCells = function()
+    this.unHighlightCells = function(highlightClass)
     {
         var cells = document.getElementsByTagName('input');
         for (var cell in cells)
         {
             if (cells.hasOwnProperty(cell) && cells[cell].type == 'text')
             {
-                cells[cell].className = '';
+                cells[cell].parentNode.classList.remove(highlightClass);
             }
         }
     }
