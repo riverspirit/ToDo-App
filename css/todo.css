@@ -35,7 +35,10 @@ body {
 .container input[type=text] {
     width: calc(100% - 80px);
     background: #EDF1ED;
-
+    display: block;
+    float: left;
+    height: 26px;
+    outline: none
 }
 
 
@@ -150,7 +153,7 @@ body {
     border: 1px solid transparent;
     transition: border 0.3s linear 0s;
     border-radius: 4px 4px 4px 4px;
-    padding: 2px 0 8px 0;
+    padding: 2px 0 8px 20px;
     height: 20px;
 }
 
