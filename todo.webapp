@@ -1,0 +1,20 @@
+{
+  "name": "Todo Lite",
+  "description": "Light weight todo list app with a clean interface. Just to-do it ✔",
+  "launch_path": "/",
+  "icons": {
+    "64": "/images/app-icon-64.png",
+    "128": "/images/app-icon-128.png"
+  },
+  "developer": {
+    "name": "Saurabh aka JSX",
+    "url": "http://rebugged.com"
+  },
+  "default_locale": "en",
+  "appcache_path": "/todo.appcache",
+  "permissions": {
+    "desktop-notification": {
+      "description": "Required to show alerts on new messages."
+    }
+  }
+}
