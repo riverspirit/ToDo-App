@@ -1,7 +1,7 @@
 {
   "name": "Todo Lite",
   "description": "Light weight todo list app with a clean interface. Just to-do it ✔",
-  "launch_path": "/",
+  "launch_path": "/index.html",
   "icons": {
     "64": "/images/app-icon-64.png",
     "128": "/images/app-icon-128.png"
