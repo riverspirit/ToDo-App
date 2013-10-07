@@ -161,3 +161,9 @@ body {
     border: 1px solid #129FEA;
     box-shadow: 0 1px 1px #DDDDDD inset;
 }
+
+@media all and (max-width: 800px) {
+    .keyboardShortcutTip {
+        display: none;
+    }
+}
